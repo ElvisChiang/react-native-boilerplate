@@ -21,7 +21,8 @@
 		"eslint-plugin-jsx-a11y": "^5.1.1",
 		"eslint-plugin-react": "^7.3.0",
 		"jest": "21.0.2",
-		"react-test-renderer": "16.0.0-alpha.12"
+		"react-test-renderer": "16.0.0-alpha.12",
+		"reactotron-react-native": "^1.12.3"
 	},
 	"jest": {
 		"preset": "react-native"
