@@ -1,0 +1,17 @@
+{
+    "search.exclude": {
+        "**/.git": true,
+        "**/.idea": true,
+        "**/ios/build": true,
+        "**/ios/Pods": true,
+        "**/android/build": true,
+        "**/android/app/build": true
+    },
+    "react-native-storybooks.port": 7007,
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [150],
+    "editor.cursorBlinking": "solid",
+    "javascript.validate.enable": false,
+    "prettier.singleQuote": true
+}
