@@ -1,0 +1,65 @@
+# More documentation about how to customize your build
+# can be found here:
+# https://docs.fastlane.tools
+fastlane_version "1.109.0"
+
+# This value helps us track success metrics for Fastfiles
+# we automatically generate. Feel free to remove this line
+# once you get things running smoothly!
+generated_fastfile_id "27630dab-f269-41c0-bbdf-8699f10f565e"
+
+default_platform :android
+
+# Fastfile actions accept additional configuration, but
+# don't worry, fastlane will prompt you for required
+# info which you can add here later
+lane :buildandroid do
+  sh("yarn")
+  # build the release variant
+  gradle(
+    task: "assemble",
+    build_type: "Release",
+    project_dir: "android/"
+  )
+end
+
+lane :android do
+  buildandroid
+  # upload to Google Play
+  supply(
+    track: "alpha",
+    skip_upload_images: true,
+    skip_upload_screenshots: true,
+    apk: "android/app/build/outputs/apk/app-release-signed.apk"
+  )
+end
+
+lane :buildios do
+  sh("yarn")
+  # build your iOS app
+  Dir.chdir("../ios") do
+    # code here runs in the parent directory
+    sh("pwd")
+    sh("./setup_ios.sh")
+  end
+  cocoapods(
+    podfile: "./ios/Podfile"
+  )
+  gym(
+    scheme: "hello",
+    export_method: "app-store",
+    workspace: 'ios/hello.xcworkspace'
+  )
+end
+
+lane :ios do
+  buildios
+
+  # upload to Testflight
+  pilot(skip_waiting_for_build_processing: true)
+end
+
+lane :all do
+  android
+  ios
+end

@@ -1,11 +1,10 @@
 # react-native-boilerplate
 React Native boilerplate with CocoaPods, etc.
 
-# TODO
+## fastlane
+- Won't work until bundle id is corrected by user
 
-- fastlane
-- CocoaPods integration
-  - remove library in ios project
+# TODO
 - redux
   - redux-persist
   - redux-logger
