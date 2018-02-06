@@ -1,0 +1,11 @@
+patch-package
+--- a/node_modules/react-native/scripts/react-native-xcode.sh
++++ b/node_modules/react-native/scripts/react-native-xcode.sh
+@@ -120,6 +120,7 @@ $NODE_BINARY $CLI_PATH $BUNDLE_COMMAND \
+   --dev $DEV \
+   --reset-cache \
+   --bundle-output "$BUNDLE_FILE" \
++  --sourcemap-output "$DEST/sourcemap.js" \
+   --assets-dest "$DEST"
+ 
+ if [[ $DEV != true && ! -f "$BUNDLE_FILE" ]]; then
